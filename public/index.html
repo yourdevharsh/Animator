@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animator App - Export Video</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #252525;
+        font-family: sans-serif;
+        color: white;
+      }
+
+      .toolbar {
+        background: #333;
+        padding: 10px 20px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .anim-toolbar {
+        margin-top: 15px;
+        background: #444;
+      }
+
+      button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.2s;
+        background: #555;
+        color: white;
+      }
+
+      button:hover:not(:disabled) {
+        background: #777;
+      }
+
+      button.active {
+        background: #a855f7;
+        color: white;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      button.toggle-on {
+        background: #22c55e;
+      }
+
+      .downloadBtn {
+        background: #e11d48;
+      }
+      .downloadBtn:hover {
+        background: #be123c;
+      }
+
+      .frame-display {
+        font-family: monospace;
+        font-size: 1.2em;
+        background: #222;
+        padding: 5px 10px;
+        border-radius: 4px;
+        min-width: 60px;
+        text-align: center;
+      }
+
+      input[type="color"] {
+        border: none;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        background: none;
+        padding: 0;
+      }
+
+      canvas {
+        background: white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        cursor: crosshair;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <input
+        type="color"
+        id="colorPicker"
+        value="#000000"
+        title="Change Color"
+      />
+      <div
+        style="width: 1px; height: 30px; background: #555; margin: 0 5px"
+      ></div>
+
+      <button class="drawBtn active">Draw</button>
+      <button class="moveBtn">Move</button>
+      <button class="rotateBtn">Rotate</button>
+
+      <div
+        style="width: 1px; height: 30px; background: #555; margin: 0 5px"
+      ></div>
+
+      <button class="eraserBtn">Eraser</button>
+      <select
+        id="eraserSelect"
+        style="
+          padding: 5px;
+          border-radius: 4px;
+          background: #ddd;
+          display: none;
+        "
+      >
+        <option value="area">Area (Brush)</option>
+        <option value="stroke">Stroke (Delete)</option>
+      </select>
+
+      <div
+        style="width: 1px; height: 30px; background: #555; margin: 0 5px"
+      ></div>
+
+      <button class="undoBtn">Undo</button>
+      <button class="redoBtn">Redo</button>
+    </div>
+
+    <canvas id="canvas" width="800" height="600"></canvas>
+
+    <div class="toolbar anim-toolbar">
+      <button class="onionBtn toggle-on">Onion Skin: ON</button>
+      <div
+        style="width: 1px; height: 30px; background: #555; margin: 0 5px"
+      ></div>
+      <button class="prevBtn" disabled>◀ Prev</button>
+      <span class="frame-display">1 / 1</span>
+      <button class="nextBtn" disabled>Next ▶</button>
+      <div
+        style="width: 1px; height: 30px; background: #555; margin: 0 5px"
+      ></div>
+      <button class="addFrameBtn" title="Add Empty Frame">+ New</button>
+      <button class="duplicateBtn" title="Copy Current to New Frame">
+        ⧉ Duplicate
+      </button>
+      <button class="playBtn">▶ Play</button>
+      <div
+        style="width: 1px; height: 30px; background: #555; margin: 0 5px"
+      ></div>
+      <button class="downloadBtn">⬇ Video</button>
+    </div>
+
+    <script src="public/main.js"></script>
+  </body>
+</html>
