@@ -5,8 +5,8 @@ const ctx = canvas.getContext('2d');
 const drawBtn = document.querySelector('.drawBtn');
 const moveBtn = document.querySelector('.moveBtn');
 const rotateBtn = document.querySelector('.rotateBtn');
-const eraserBtn = document.querySelector('.eraserBtn'); // NEW
-const eraserSelect = document.getElementById('eraserSelect'); // NEW
+const eraserBtn = document.querySelector('.eraserBtn');
+const eraserSelect = document.getElementById('eraserSelect');
 const undoBtn = document.querySelector('.undoBtn');
 const redoBtn = document.querySelector('.redoBtn');
 const colorPicker = document.getElementById('colorPicker');
@@ -23,7 +23,7 @@ const frameDisplay = document.querySelector('.frame-display');
 // --- App State ---
 let currentState = "draw"; 
 let currentColor = "#000000";
-let currentWidth = 3; // NEW: track line width
+let currentWidth = 3;
 
 // Animation Data
 let frames = [ [] ]; 
